@@ -4,17 +4,16 @@ import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { Route } from 'react-router-dom';
-import Cookies from 'universal-cookie';
 import axios from 'axios';
 
 import store, { history } from './store';
+import cookies from './utils/cookies';
 
 import App from './App';
 
 import { AuthTypes } from './modules/auth';
 
 // Load JWT tokens
-const cookies = new Cookies();
 const token = cookies.get('token');
 
 if (token) {

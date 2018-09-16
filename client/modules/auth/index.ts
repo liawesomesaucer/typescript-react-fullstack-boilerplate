@@ -1,11 +1,10 @@
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 import { Dispatch, Action } from 'redux';
 
 import { history } from 'Boilerplate/store';
 import { User } from 'Boilerplate/types';
 
-const cookies = new Cookies();
+import cookies from '../../utils/cookies';
 const API_URL = '/api';
 
 // Types

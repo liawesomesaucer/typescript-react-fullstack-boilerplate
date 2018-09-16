@@ -13,7 +13,7 @@
     "clean": "rimraf dist",
     "lint": "eslint client server",
     "start": "npm run clean && npm run build && npm run start:prod",
-    "start:dev": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=development nodemon index.ts",
+    "start:dev": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=development nodemon",
     "start:prod": "cross-env NODE_ENV=production ts-node index.ts"
   },
   "main": "index.ts",

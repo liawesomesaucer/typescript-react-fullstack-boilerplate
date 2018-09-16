@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 
 import * as authActions from '../../modules/auth';
 
-const cookies = new Cookies();
+import cookies from '../../utils/cookies';
 
 interface NavigationProps {
   user: any;

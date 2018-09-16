@@ -1,8 +1,8 @@
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 import { Dispatch, Action } from 'redux';
 
 import { history } from 'Boilerplate/store';
+import cookies from '../../utils/cookies';
 
 // Types
 import { AuthTypes, errorHandler } from '../auth';
@@ -13,7 +13,6 @@ export const TODO_LOAD = 'todos/TODO_LOAD';
 export const TODO_DELETE = 'todos/TODO_DELETE';
 
 const API_URL = '/api';
-const cookies = new Cookies();
 
 // Reducer
 export default function (state = {}, action: any) {

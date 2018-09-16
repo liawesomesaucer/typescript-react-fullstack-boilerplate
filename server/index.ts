@@ -12,7 +12,7 @@ import * as mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 import * as passport from 'passport';
 import * as cookieParser from 'cookie-parser';
-import * as session from 'express-session';
+// import * as session from 'express-session';
 
 const config = require('../webpack.config.dev');
 const prodConfig = require('../webpack.config.prod');
@@ -62,11 +62,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Sessions needed for users
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: true,
-  saveUninitialized: true,
-}));
+// app.use(session({
+//   secret: process.env.SESSION_SECRET,
+//   resave: true,
+//   saveUninitialized: true,
+// }));
 
 // Passport
 app.use(passport.initialize());

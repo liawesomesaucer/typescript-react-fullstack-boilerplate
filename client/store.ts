@@ -9,8 +9,8 @@ import rootReducer from './reducers';
 export const history = createHistory();
 
 const initialState = {};
-const enhancers: Array<object> = [];
-const middleware = [
+const enhancers = [];
+let middleware = [
   thunk,
   routerMiddleware(history),
 ];
@@ -25,8 +25,13 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
+middleware = middleware.filter(e =>  {
+  console.log(e)
+  return typeof e === 'function'
+});
+
 // Redux enhancers
-const composedEnhancers = (compose as any)(
+const composedEnhancers = compose(
   applyMiddleware(...middleware),
   ...enhancers,
 );

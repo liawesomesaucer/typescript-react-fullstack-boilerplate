@@ -1,4 +1,4 @@
-import Cookies from 'universal-cookie';
+const Cookies = require('universal-cookie');
 
 const cookies = new Cookies();
 
