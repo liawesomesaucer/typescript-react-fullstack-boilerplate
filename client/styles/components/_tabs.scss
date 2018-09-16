@@ -1,0 +1,92 @@
+.tab {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-appearance: button; /* for input */
+  -webkit-user-select: none; /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  background-color: $BLACK;
+  padding: 20px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  outline: none;
+
+  &.active {
+    color: $BLUE;
+    border-bottom: 2px solid $BLUE;
+  }
+
+  &__wrapper {
+    >li {
+      padding: 0 1px;
+    }
+    &.list-unstyled {
+      // Account for bootstrap's default list-unstyled properties
+      margin-left: -1px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Correspond to a vertical tab list
+.tab-list {
+  background: $FULLBLACK;
+
+  &__item {
+    background: $FULLBLACK;
+    padding: 5px 12px;
+
+    // Override button styles for interactive tabs
+    border: none;
+    border-bottom: 1px solid $ACCENT;
+    display: block;
+    width: 100%;
+    text-align: left;
+
+    &.active {
+      border-left: 2px solid $BLUE;
+      padding-left: 10px;
+
+      >p,a,h6 {
+        color: $BLUE;
+      }
+    }
+
+    &:hover,
+    &:visited,
+    &:focus,
+    &:active {
+      outline: none;
+      border-bottom: 1px solid $ACCENT;
+    }
+
+    &-highlight {
+      background: $FULLBLACK;
+      border-bottom: 2px solid $BLUE;
+
+      &:hover,
+      &:visited,
+      &:focus,
+      &:active {
+        background: $FULLBLACK;
+        border-bottom: 2px solid $BLUE;
+      }
+    }
+  }
+
+  &__label,
+  &__value {
+    width: 50%;
+    display: inline-block;
+  }
+
+  &__value {
+    text-transform: capitalize;
+  }
+}

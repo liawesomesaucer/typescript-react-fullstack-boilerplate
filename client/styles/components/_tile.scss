@@ -1,0 +1,90 @@
+.tile {
+  text-transform: uppercase;
+  padding: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__wrapper {
+    min-height: 140px;
+    display: flex;
+    align-items: stretch;
+    position: relative;
+  }
+
+  &__map {
+    min-height: 140px;
+    justify-content: space-around;
+  }
+
+  &__game {
+    width: 80px;
+    padding-left: 20px;
+    align-self: center;
+  }
+
+  &__game-icon {
+    width: 50px;
+  }
+  
+  &__content {
+    padding-left: 20px;
+  }
+
+  &__type {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    font-size: 14px;
+  }
+
+  &__author {
+    font-size: 12px;
+    font-weight: lighter;
+  }
+
+  // Book selector tiles
+  &__book {
+    padding: 40px 10px;
+  }
+
+  &__book-title {
+    width: 100%;
+    display: block;
+  }
+
+  // Guide tiles
+  &__guide {
+    min-height: 150px;
+  }
+
+  &__guide &__title {
+    font-size: 18px;
+  }
+
+  // Video tiles
+  &__video {
+    margin-bottom: 22px;
+  }
+
+  &__video-info {
+    background: $FULLBLACK;
+    padding: 12px 12px 4px 12px;
+    display: flex;
+    align-items: center;
+    height: 84px;
+    
+    h6 {
+      margin-top: 4px;
+    }
+  }
+
+  &__video-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 14px;
+  }
+}

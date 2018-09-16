@@ -1,0 +1,63 @@
+.section {
+  margin: 20px 0;
+  padding-bottom: 30px;
+
+  &__bg {
+    background: $TRANSLUCENT-BLACK;
+  }
+  
+  &__book-selector {
+    padding: 32px 0;
+  }
+
+  &__header {
+    background: $TRANSLUCENT-BLACK;
+    border-bottom: 2px solid $BLUE;
+    padding: 1px 10px 5px 24px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+
+    h3 {
+      font-size: 16px;
+    }
+  }
+
+  &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__content {
+    padding: 0 20px;
+
+    &-no-pad {
+      padding: 0;
+    }
+  }
+
+  &__home-guides {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    padding: 32px 0;
+    margin: 0;
+  }
+
+  &__home-guides-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/assets/images/example-images/screen1.jpg') no-repeat center center;
+    background-size: cover;
+    -webkit-filter: blur(10px); /* Safari 6.0 - 9.0 */
+    filter: blur(10px);
+    z-index: -1;
+  }
+
+  &__margin-top {
+    margin-top: 20px;
+  }
+}

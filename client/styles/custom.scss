@@ -1,0 +1,22 @@
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 5px;
+  text-align: center;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: ".";    
+    display: block;    
+    height: 0;    
+    overflow: hidden; 
+}
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; } /* IE < 8 */
+
+.float-right { float: right; }
+.float-left { float: left; }
+.float-center { float: center; }

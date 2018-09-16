@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+      "outDir": "./dist/",
+      "sourceMap": true,
+      "noImplicitAny": true,
+      "module": "commonjs",
+      "target": "es5",
+      "jsx": "react",
+      "lib": ["es5", "es6", "dom"],
+      "allowSyntheticDefaultImports": true,
+      "baseUrl": ".",
+      "paths": {
+        "Boilerplate/*": ["./client/*"],
+        "Types": ["./client/types/index.ts"]
+      }
+  },
+  "include": [
+      "./client/**/*",
+      "./server/**/*"
+  ],
+  "exclude": [
+    "./node_modules/*"
+  ]
+}

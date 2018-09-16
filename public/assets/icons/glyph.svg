@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="158px" height="180px" viewBox="0 0 158 180" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="white@0.5-copy-3" transform="translate(-36.000000, -44.000000)">
+            <g id="Group" transform="translate(27.000000, 46.000000)">
+                <ellipse id="Oval" stroke="#3DBEDB" stroke-width="3" cx="88" cy="88" rx="22" ry="88"></ellipse>
+                <ellipse id="Oval" stroke="#3DBEDB" stroke-width="3" transform="translate(88.000000, 88.000000) rotate(-60.000000) translate(-88.000000, -88.000000) " cx="88" cy="88" rx="22" ry="88"></ellipse>
+                <ellipse id="Oval" stroke="#3DBEDB" stroke-width="3" transform="translate(88.000000, 88.000000) rotate(-300.000000) translate(-88.000000, -88.000000) " cx="88" cy="88" rx="22" ry="88"></ellipse>
+                <text id="B" font-family="Montserrat-Regular, Montserrat" font-size="64" font-weight="normal" letter-spacing="2.04799986" fill="#666666">
+                    <tspan x="64" y="109">B</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

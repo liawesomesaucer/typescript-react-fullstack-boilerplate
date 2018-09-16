@@ -1,0 +1,12 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+       "tslint-eslint-rules",
+       "tslint-config-airbnb"
+   ],
+  "jsRules": {},
+  "rules": {
+    "allowSyntheticDefaultImports": true,
+    "allow-synthetic-default-imports": true
+  }
+}

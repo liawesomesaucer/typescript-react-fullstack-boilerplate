@@ -1,0 +1,24 @@
+.text {
+  &-underline {
+    border-bottom: 1px solid $WHITE;
+  }
+  &__uppercase-title {
+    font-size: 28px;
+    text-transform: uppercase;
+  }
+  &__uppercase-title-light {
+    font-size: 18px;
+    font-family: $TEXT_FONT_FAMILY;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  &__uppercase-info {
+    font-size: 12px;
+    font-family: $TEXT_FONT_FAMILY;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  &__nade-title {
+    font-size: 58px;
+  }
+}

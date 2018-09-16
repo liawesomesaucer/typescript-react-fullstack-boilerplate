@@ -1,0 +1,16 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules"
+  ],
+  "verbose": true,
+  "watch": [
+    "server/**/*.ts"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "exec": "ts-node -t ES2016 --moduleResolution node --allowSyntheticDefaultImports --lib ES2016 ./index.ts",
+  "ext": "js ts json"
+}
