@@ -1,18 +1,18 @@
-import * as express from 'express';
-import * as logger from 'morgan';
-import * as bodyParser from 'body-parser';
-import * as path from 'path';
-import * as helmet from 'helmet';
-import * as cors from 'cors';
-import * as compression from 'compression';
-import * as webpack from 'webpack';
-import * as webpackDevMiddleware from 'webpack-dev-middleware';
-import * as webpackHotMiddleware from 'webpack-hot-middleware';
-import * as mongoose from 'mongoose';
-import * as dotenv from 'dotenv';
-import * as passport from 'passport';
-import * as cookieParser from 'cookie-parser';
-// import * as session from 'express-session';
+import express from 'express';
+import logger from 'morgan';
+import bodyParser from 'body-parser';
+import path from 'path';
+import helmet from 'helmet';
+import cors from 'cors';
+import compression from 'compression';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+
+import passport from './config/passport';
 
 const config = require('../webpack.config.dev');
 const prodConfig = require('../webpack.config.prod');
@@ -61,16 +61,8 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Sessions needed for users
-// app.use(session({
-//   secret: process.env.SESSION_SECRET,
-//   resave: true,
-//   saveUninitialized: true,
-// }));
-
 // Passport
 app.use(passport.initialize());
-app.use(passport.session());
 
 app.disable('x-powered-by');
 app.enable('trust proxy');

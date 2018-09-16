@@ -41,77 +41,66 @@ const form = reduxForm({
   validate
 });
 
-interface RegisterPageProps {
+interface RegisterProps {
   registerUser: (_: RegisterInfo) => any;
   handleSubmit: (_: any) => any;
   errorMessage: string;
 }
 
-class RegisterPage extends React.Component<RegisterPageProps & InjectedFormProps, {}> {
-  handleFormSubmit(formProps: RegisterInfo) {
-    this.props.registerUser(formProps);
-  }
-
-  render() {
-    const { handleSubmit } = this.props;
-
-    return (
-      <div className="auth__wrapper">
-        <div className="auth__background" />
-        <div className="auth">
-          <h3>Register for Boilerplate</h3>
-          <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-            {this.props.errorMessage &&
-              <div>
-                <span>
-                  <strong>Error!</strong> {this.props.errorMessage}
-                </span>
-              </div>
-            }
-            <div className="row">
-              <div className="col-md-12">
-                <label htmlFor="sb-auth--form-username">Username</label>
-                <Field
-                  id="sb-auth--form-username"
-                  name="username"
-                  className="form-control"
-                  component={renderField}
-                  type="text"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                <label htmlFor="sb-auth--form-email">Email</label>
-                <Field
-                  id="sb-auth--form-email"
-                  name="email"
-                  className="form-control"
-                  component={renderField}
-                  type="text"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                <label htmlFor="sb-auth--form-password">Password</label>
-                <Field
-                  id="sb-auth--form-password"
-                  name="password"
-                  className="form-control"
-                  component={renderPasswordField}
-                  type="password"
-                />
-              </div>
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Register
-            </button>
-          </form>
+const Register: React.SFC<RegisterProps & InjectedFormProps> = ({ handleSubmit, registerUser }) => {
+  return (
+    <div className="auth">
+      <h3>Register for Boilerplate</h3>
+      <form onSubmit={handleSubmit((registerInfo: RegisterInfo) => registerUser(registerInfo))}>
+        {this.props.errorMessage &&
+          <div>
+            <span>
+              <strong>Error!</strong> {this.props.errorMessage}
+            </span>
+          </div>
+        }
+        <div className="row">
+          <div className="col-md-12">
+            <label htmlFor="sb-auth--form-username">Username</label>
+            <Field
+              id="sb-auth--form-username"
+              name="username"
+              className="form-control"
+              component={renderField}
+              type="text"
+            />
+          </div>
         </div>
-      </div>
-    );
-  }
+        <div className="row">
+          <div className="col-md-12">
+            <label htmlFor="sb-auth--form-email">Email</label>
+            <Field
+              id="sb-auth--form-email"
+              name="email"
+              className="form-control"
+              component={renderField}
+              type="text"
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <label htmlFor="sb-auth--form-password">Password</label>
+            <Field
+              id="sb-auth--form-password"
+              name="password"
+              className="form-control"
+              component={renderPasswordField}
+              type="password"
+            />
+          </div>
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Register
+            </button>
+      </form>
+    </div>
+  );
 }
 
 function mapStateToProps(state: any) {
@@ -124,4 +113,4 @@ function mapStateToProps(state: any) {
 export default connect(
   mapStateToProps,
   { registerUser }
-)(form(RegisterPage));
+)(form(Register));

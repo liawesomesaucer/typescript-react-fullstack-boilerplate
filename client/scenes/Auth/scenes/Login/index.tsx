@@ -11,48 +11,46 @@ const form = reduxForm({
 interface LoginProps {
   errorMessage: string;
   loginUser: (_: LoginInfo) => any;
+  handleSubmit: (_: any) => any;
 }
 
-const Login: React.SFC<LoginProps & InjectedFormProps> = () => {
+const Login: React.SFC<LoginProps & InjectedFormProps> = ({ errorMessage, handleSubmit }) => {
   return (
-    <div className="auth__wrapper">
-      <div className="auth__background" />
-      <div className="auth">
-        <h3>Login to Boilerplate</h3>
-        <form onSubmit={(e) => this.props.loginUser(e)}>
-          {this.props.errorMessage &&
-            <div>
-              <span>
-                <strong>Error!</strong>
-                {this.props.errorMessage}
-              </span>
-            </div>
-          }
+    <div className="auth">
+      <h3>Login to Boilerplate</h3>
+      <form onSubmit={handleSubmit((loginInfo: LoginInfo) => loginUser(loginInfo))}>
+        {errorMessage &&
           <div>
-            <label htmlFor="email">Email</label>
-            <Field
-              id="email"
-              name="email"
-              className="form-control"
-              component="input"
-              type="text"
-            />
+            <span>
+              <strong>Error!</strong>
+              {errorMessage}
+            </span>
           </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <Field
-              id="password"
-              name="password"
-              className="form-control"
-              component="input"
-              type="password"
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Login
+        }
+        <div>
+          <label htmlFor="email">Email</label>
+          <Field
+            id="email"
+            name="email"
+            className="form-control"
+            component="input"
+            type="text"
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <Field
+            id="password"
+            name="password"
+            className="form-control"
+            component="input"
+            type="password"
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Login
             </button>
-        </form>
-      </div>
+      </form>
     </div>
   );
 }

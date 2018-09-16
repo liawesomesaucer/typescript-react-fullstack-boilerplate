@@ -6,7 +6,6 @@
    ],
   "jsRules": {},
   "rules": {
-    "allowSyntheticDefaultImports": true,
-    "allow-synthetic-default-imports": true
+    "allowSyntheticDefaultImports": true
   }
 }

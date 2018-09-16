@@ -1,5 +1,5 @@
-import * as passport from 'passport';
-import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
+import passport from 'passport';
+import { Strategy, ExtractJwt } from 'passport-jwt';
 
 import User from '../models/users';
 import config from './config';
@@ -13,7 +13,7 @@ const jwtOptions = {
 };
 
 // Setting up JWT login strategy
-const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
+const jwtLogin = new Strategy(jwtOptions, (payload, done) => {
   User.findById(payload._id, (err, user) => {
     if (err) { return done(err, false); }
 
@@ -26,3 +26,5 @@ const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
 });
 
 passport.use(jwtLogin);
+
+export default passport;
