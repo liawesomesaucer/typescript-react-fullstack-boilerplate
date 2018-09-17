@@ -1,0 +1,14 @@
+.navbar {
+  width: 100%;
+  background-color: $ACCENT;
+
+  &__content {
+    max-width: 1000px;
+    padding: 20px;
+  }
+
+  &__link {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}

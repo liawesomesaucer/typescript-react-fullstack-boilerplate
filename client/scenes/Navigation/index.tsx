@@ -10,9 +10,9 @@ import cookies from '../../utils/cookies';
 interface NavigationProps {
   user: any;
   authenticated: boolean;
-  logoutUser:() => void;
-  unauthUser:() => void;
-  authUser:(user: any) => void;
+  logoutUser: () => void;
+  unauthUser: () => void;
+  authUser: (user: any) => void;
 };
 
 /**
@@ -51,12 +51,23 @@ class Navigation extends React.Component<NavigationProps, {}> {
 
     return (
       <div className="navbar nav">
-        {authenticated &&
-          <p>Hi {user.username}, you are authenticated</p>
-        }
-        <Link to="/">Home</Link>
-        <Link to="/todos">Todos</Link>
-        <button onClick={this.handleLogout}>Logout</button>
+        <div className="navbar__content">
+          {authenticated &&
+            <p>Hi {user.username}, you are authenticated</p>
+          }
+          <Link to="/" className="navbar__link">Home</Link>
+          <Link to="/todos" className="navbar__link">Todos</Link>
+          {authenticated
+            ? (
+              <a onClick={this.handleLogout}>Logout</a>
+            ) : (
+              <React.Fragment>
+                <Link className="navbar__link" to="/login">Login</Link>
+                <Link className="navbar__link" to="/register">Register</Link>
+              </React.Fragment>
+            )
+          }
+        </div>
       </div>
     );
   }

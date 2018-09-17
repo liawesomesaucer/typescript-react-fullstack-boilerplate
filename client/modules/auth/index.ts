@@ -14,13 +14,6 @@ export enum AuthTypes {
   REGISTER_USER = 'auth/REGISTER_USER',
   UNAUTH_USER = 'auth/UNAUTH_USER',
   AUTH_ERROR = 'auth/AUTH_ERROR',
-  PROTECTED_TEST = 'auth/PROTECTED_TEST',
-  LOGIN_REQUEST = 'auth/LOGIN_REQUEST',
-  LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS',
-  LOGIN_FAILURE = 'auth/LOGIN_FAILURE',
-  LOGOUT_REQUEST = 'auth/LOGOUT_REQUEST',
-  LOGOUT_SUCCESS = 'auth/LOGOUT_SUCCESS',
-  LOGOUT_FAILURE = 'auth/LOGOUT_FAILURE',
 }
 
 interface AuthAction extends Action {
@@ -30,6 +23,7 @@ interface AuthAction extends Action {
 interface AuthError {
   data: any,
   status: number,
+  response: any,
 }
 
 interface AuthState {
@@ -59,8 +53,6 @@ export default function (state = INITIAL_STATE, action: AuthAction) {
       return { ...state, authenticated: false };
     case AuthTypes.AUTH_ERROR:
       return { ...state, error: action.payload };
-    case AuthTypes.PROTECTED_TEST:
-      return { ...state, content: action.payload };
     default:
       return state;
   }
@@ -154,7 +146,6 @@ export function registerUser({ email, username, password }: RegisterInfo) {
       history.push('/');
     })
     .catch((error) => {
-      if (!error.response) return;
       errorHandler(dispatch, error.response, AuthTypes.AUTH_ERROR);
     });
   };
@@ -167,23 +158,5 @@ export function logoutUser() {
     cookies.remove('token', { path: '/' });
 
     history.push('/');
-  };
-}
-
-// Example function to get a protected element
-export function protectedTest() {
-  return (dispatch: Dispatch) => {
-    axios.get(`${API_URL}/protected`, {
-      headers: { Authorization: cookies.get('token') },
-    })
-    .then((response) => {
-      dispatch({
-        type: AuthTypes.PROTECTED_TEST,
-        payload: response.data.content,
-      });
-    })
-    .catch((error) => {
-      errorHandler(dispatch, error.response, AuthTypes.AUTH_ERROR);
-    });
   };
 }

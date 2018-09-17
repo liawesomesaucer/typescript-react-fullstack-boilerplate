@@ -2,7 +2,7 @@ import React from 'react';
 
 const NotFound: React.SFC = () => {
   return (
-    <div>
+    <div className="container">
       <h1>Page not found</h1>
     </div>
   );

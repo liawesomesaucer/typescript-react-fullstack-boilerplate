@@ -25,9 +25,9 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
+// Remove undefined middleware
 middleware = middleware.filter(e =>  {
-  console.log(e)
-  return typeof e === 'function'
+  return typeof e === 'function';
 });
 
 // Redux enhancers

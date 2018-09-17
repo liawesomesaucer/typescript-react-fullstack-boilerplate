@@ -5,14 +5,11 @@
 @import 'base/variables';
 @import 'base/base';
 
-// Text
-@import 'text/text';
-
 // Components
-@import 'components/header';
-@import 'components/footer';
+@import 'components/navigation';
 @import 'components/buttons';
 @import 'components/inputs';
+@import 'components/toasts';
 
 // Overrides
 @import 'custom';

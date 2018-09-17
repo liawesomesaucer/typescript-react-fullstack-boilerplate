@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 import { Field, reduxForm, InjectedFormProps } from "redux-form";
 
 import { registerUser, RegisterInfo } from "Boilerplate/modules/auth";
+import Toast from 'Boilerplate/components/Toast';
 
 const renderField = (field: any) => (
   <div>
-    <input className="form-control" {...field.input} />
+    <input className="form-control" type="text" {...field.input} />
     {field.touched && field.error && <div className="error">{field.error}</div>}
   </div>
 );
@@ -47,18 +48,12 @@ interface RegisterProps {
   errorMessage: string;
 }
 
-const Register: React.SFC<RegisterProps & InjectedFormProps> = ({ handleSubmit, registerUser }) => {
+const Register: React.SFC<RegisterProps & InjectedFormProps> = ({ handleSubmit, registerUser, errorMessage }) => {
   return (
-    <div className="auth">
+    <div className="container">
       <h3>Register for Boilerplate</h3>
       <form onSubmit={handleSubmit((registerInfo: RegisterInfo) => registerUser(registerInfo))}>
-        {this.props.errorMessage &&
-          <div>
-            <span>
-              <strong>Error!</strong> {this.props.errorMessage}
-            </span>
-          </div>
-        }
+        {errorMessage && <Toast text={errorMessage} type="error" />}
         <div className="row">
           <div className="col-md-12">
             <label htmlFor="sb-auth--form-username">Username</label>

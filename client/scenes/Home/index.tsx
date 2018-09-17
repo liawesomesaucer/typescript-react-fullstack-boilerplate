@@ -1,12 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Home: React.SFC = () => {
   return (
-    <div className="stretch">
-      <h1>Hello</h1>
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
+    <div className="container">
+      <h1>This is Boilerplate</h1>
+      <div className="home__links">
+        <a
+          href="https://github.com/liawesomesaucer/typescript-react-boilerplate"
+          target="_blank">Documentation
+        </a>
+      </div>
     </div>
   );
 }

@@ -2,12 +2,12 @@
  * This file is primarily for CSS resets
  */
 
-body, 
-html, 
+body,
+html,
 #app {
   width: 100%;
-  height: 100%;
-  background-color: $BLACK;
+  margin: 0;
+  padding: 0;
 }
 
 .stretch {
@@ -15,9 +15,9 @@ html,
   height: 100%;
 }
 
-.hero-text {
-  font-size: 42px;
-  display: block;
+.container {
+  max-width: 1000px;
+  padding: 20px;
 }
 
 #gl-init {
@@ -37,7 +37,6 @@ li,
 span,
 label,
 div {
-  color: $WHITE;
   line-height: 1.4;
 }
 
@@ -57,8 +56,10 @@ span,
 label,
 input,
 textarea,
-button {
+button,
+div {
   font-family: $TEXT_FONT_FAMILY;
+  letter-spacing: 0.4px;
 }
 
 h1 {
@@ -92,7 +93,6 @@ h6 {
 }
 
 label {
-  text-transform: uppercase;
   letter-spacing: 0.5px;
   font-size: 16px;
   margin-top: 8px;
@@ -105,87 +105,4 @@ li {
   font-weight: 300;
   letter-spacing: 1px;
   font-size: 18px;
-}
-
-.text-small {
-  font-size: 14px;
-}
-
-.vcenter-parent {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.row.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-}
-.row.no-gutters > [class^="col-"],
-.row.no-gutters > [class*=" col-"] {
-  padding-right: 0;
-  padding-left: 0;
-}
-
-a {
-  cursor: pointer;
-}
-
-a:hover,
-a:focus {
-  text-decoration: none;
-  color: $WHITE;
-}
-
-// Counteract nav height
-.page-content {
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
-hr {
-  background-color: $WHITE;
-}
-
-.blue {
-  color: $BLUE;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-.mt-0 {
-  margin-top: 0 !important;
-}
-
-.mb-0 {
-  margin-bottom: 0 !important;
-}
-
-.pt-0 {
-  padding-top: 0 !important;
-}
-
-.pb-0 {
-  padding-bottom: 0 !important;
-}
-
-.p-0 {
-  padding: 0 !important;
-}
-
-.flex-row {
-  display: flex;
-}
-
-.page__loading {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.no-padding {
-  padding: 0 !important;
 }

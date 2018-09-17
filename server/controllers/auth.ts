@@ -55,18 +55,20 @@ export function getUserIdFromHeaders(headers: any) {
 // Login Route
 export function login(req: Request, res: Response) {
   const { email, password } = req.body;
+  console.log('wowowow');
+
   UserModel.findOne({ email }, (err: any, user: User) => {
     if (err) {
-      return;
+      return res.status(500).send('An unexpected error occurred');
     }
 
     if (!user) {
-      res.status(500).send("Your login details could not be verified. Please try again.");
+      return res.status(500).send("Your login details could not be verified. Please try again.");
     }
 
     user.comparePassword(password, (comparePasswordErr: any, isMatch: boolean) => {
       if (comparePasswordErr) {
-        res.status(500).send("Your login details could not be verified. Please try again.");
+        res.status(401).send("Your login details could not be verified. Please try again.");
       }
 
       if (!isMatch) {

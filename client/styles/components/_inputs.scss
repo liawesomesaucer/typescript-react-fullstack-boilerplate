@@ -2,39 +2,20 @@ input[type="text"],
 input[type="password"],
 input[type="number"],
 textarea {
-  background-color: $TRANSLUCENT-BLACK;
-  color: $WHITE;
-}
+  line-height: 45px;
+  margin-bottom: 0;
+  margin-right: 15px;
+  appearance: none;
+  border: none;
+  background-color: $ACCENT;
+  border-radius: 10px;
+  display: block;
+  font-size: 18px;
+  padding: 0 10px;
+  margin: 6px 0 15px 0;
 
-.form-control {
-  border-radius: 0;
-  border: 1px solid $ACCENT;
-  margin-bottom: 10px;
-}
+  // Prevent padding from interfering with width
+  @include border-box-full-width;
 
-select.form-control {
-  background-color: $BLACK !important;
-  color: $WHITE;
-}
-
-.input {
-  &-large {
-    height: 45px;
-    line-height: 45px;
-    margin-bottom: 0;
-    margin-right: 15px;
-  }
-
-  &-select-inline {
-    width: 150px;
-    display: inline-block;
-    background-color: $BLACK !important;
-    color: $WHITE;
-    border-radius: 0;
-    -webkit-appearance: none;
-    padding: 12px 16px;
-    position: relative;
-    top: 1px;
-    margin-right: 10px;
-  }
+  border: 2px solid #ddd;
 }

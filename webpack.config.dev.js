@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer/lib/autoprefixer');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const path = require('path');
@@ -98,10 +97,6 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader',
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
       },
       {
         test: /\.svg$/,

@@ -1,0 +1,12 @@
+.toast {
+  @include border-box-full-width;
+
+  border-radius: 10px;
+  background-color: $ACCENT;
+  padding: 15px;
+  margin-bottom: 20px;
+
+  &.error {
+    background-color: $RED;
+  }
+}

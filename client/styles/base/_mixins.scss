@@ -16,3 +16,11 @@
   display: inline-block;
   margin-left: 15px;
 }
+
+@mixin border-box-full-width {
+  width: 100%;
+  // Prevent padding from interfering with width
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Field, reduxForm, InjectedFormProps } from "redux-form";
 
 import { loginUser, LoginInfo } from "Boilerplate/modules/auth";
+import Toast from 'Boilerplate/components/Toast';
 
 const form = reduxForm({
   form: "login"
@@ -14,19 +15,12 @@ interface LoginProps {
   handleSubmit: (_: any) => any;
 }
 
-const Login: React.SFC<LoginProps & InjectedFormProps> = ({ errorMessage, handleSubmit }) => {
+const Login: React.SFC<LoginProps & InjectedFormProps> = ({ errorMessage, handleSubmit, loginUser }) => {
   return (
-    <div className="auth">
+    <div className="container">
       <h3>Login to Boilerplate</h3>
       <form onSubmit={handleSubmit((loginInfo: LoginInfo) => loginUser(loginInfo))}>
-        {errorMessage &&
-          <div>
-            <span>
-              <strong>Error!</strong>
-              {errorMessage}
-            </span>
-          </div>
-        }
+        {errorMessage && <Toast text={errorMessage} type="error" />}
         <div>
           <label htmlFor="email">Email</label>
           <Field
@@ -47,9 +41,9 @@ const Login: React.SFC<LoginProps & InjectedFormProps> = ({ errorMessage, handle
             type="password"
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn">
           Login
-            </button>
+        </button>
       </form>
     </div>
   );

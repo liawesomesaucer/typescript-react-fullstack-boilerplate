@@ -4,9 +4,8 @@ import TodoCreate from "Boilerplate/scenes/Todos/components/TodoCreate";
 
 const Todos: React.SFC = () => {
   return (
-    <div>
+    <div className="container">
       <TodoCreate />
-      <Link to="/thistodo">Login</Link>
     </div>
   );
 };

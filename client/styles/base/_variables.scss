@@ -1,35 +1,15 @@
 /**
  * Put your SCSS globals here
  */
-@font-face {
-	font-family: 'GothamBold';
-  src: url('/assets/fonts/Gotham-Bold.otf') format('opentype');
-		//  url("fonts/Samplino.woff2") format("woff2"),
-		//  url("fonts/Samplino.woff") format("woff"),
-		//  url("fonts/Samplino.ttf") format("truetype"),
-		//  url("fonts/Samplino.svg#Samplino") format("svg");
-}
-
-@font-face {
-  font-family: 'GothamBook';
-  src: url('/assets/fonts/Gotham-Book.otf') format('opentype');
-}
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 // Constant colors
 $WHITE: #FFFFFF;
-
-$BLACK: #151515;
-
-$FULLBLACK: #000;
-
-$OFFBLACK: #191919;
-
-$ACCENT: #B2B2B2;
-
-$TRANSLUCENT-BLACK: rgba(0, 0, 0, 0.6);
-
+$ACCENT: #eeeeee;
 $BLUE: #00A7FF;
+$RED: #E18194;
+$GREEN: #52E4A2;
 
-$FONT_FAMILY: 'GothamBold', Arial, Helvetica, sans-serif;
-$HEADER_FONT_FAMILY: 'GothamBold', Arial, Helvetica, sans-serif;
-$TEXT_FONT_FAMILY: 'GothamBook', Arial, Helvetica, sans-serif;
+$FONT_FAMILY: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+$HEADER_FONT_FAMILY: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+$TEXT_FONT_FAMILY: 'Source Sans Pro', Arial, Helvetica, sans-serif;
