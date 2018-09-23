@@ -84,6 +84,13 @@ export function authUser(user: User) {
 export function errorHandler(dispatch: Dispatch, error: AuthError, type: AuthTypes) {
   let errorMessage = '';
 
+  if (!error.data) {
+    dispatch({
+      type,
+      payload: 'An error occurred',
+    });
+  }
+
   if (error.data.error) {
     errorMessage = error.data.error;
   } else if (error.data) {
@@ -106,13 +113,13 @@ export function errorHandler(dispatch: Dispatch, error: AuthError, type: AuthTyp
 
 // Action creator to handle logins
 export interface LoginInfo {
-  email: string;
+  username: string;
   password: string;
 };
 
-export function loginUser({ email, password }: LoginInfo) {
+export function loginUser({ username, password }: LoginInfo) {
   return (dispatch: Dispatch) => {
-    axios.post(`${API_URL}/auth/login`, { email, password })
+    axios.post(`${API_URL}/auth/login`, { username, password })
     .then((response) => {
       cookies.set('token', response.data.token, { path: '/' });
       dispatch({
@@ -129,14 +136,13 @@ export function loginUser({ email, password }: LoginInfo) {
 
 // Action creator to register user
 export interface RegisterInfo {
-  email: string;
   username: string;
   password: string;
 };
 
-export function registerUser({ email, username, password }: RegisterInfo) {
+export function registerUser({ username, password }: RegisterInfo) {
   return (dispatch: Dispatch) => {
-    axios.post(`${API_URL}/auth/register`, { email, username, password })
+    axios.post(`${API_URL}/auth/register`, { username, password })
     .then((response) => {
       cookies.set('token', response.data.token, { path: '/' });
       dispatch({

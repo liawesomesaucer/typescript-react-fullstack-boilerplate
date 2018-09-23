@@ -3,8 +3,6 @@ input[type="password"],
 input[type="number"],
 textarea {
   line-height: 45px;
-  margin-bottom: 0;
-  margin-right: 15px;
   appearance: none;
   border: none;
   background-color: $ACCENT;
@@ -12,10 +10,25 @@ textarea {
   display: block;
   font-size: 18px;
   padding: 0 10px;
-  margin: 6px 0 15px 0;
 
   // Prevent padding from interfering with width
   @include border-box-full-width;
 
   border: 2px solid #ddd;
+
+  &.error {
+    border-color: $RED;
+  }
+}
+
+.input-group {
+  margin: 6px 0px 15px 0;
+}
+
+.input {
+  &__error-msg {
+    color: $RED;
+    font-size: 14px;
+    margin-top: 5px;
+  }
 }

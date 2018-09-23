@@ -4,19 +4,14 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  email: {
+  username: {
     type: String,
-    lowercase: true,
     unique: true,
     required: true,
   },
   password: {
     type: String,
     required: true,
-  },
-  username: {
-    type: String,
-    unique: true,
   },
   todos: [{ type: Schema.Types.ObjectId, ref: 'Todo' }],
 });

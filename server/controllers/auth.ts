@@ -10,7 +10,7 @@ import config from "../config/config";
 /**
  * Generates the JSON web token
  */
-function generateToken(user: { username: string, email: string }) {
+function generateToken(user: { username: string, _id: string }) {
   return jwt.sign(user, config.secret, {
     expiresIn: 604800 // in seconds, 1 week
   });
@@ -20,7 +20,7 @@ function generateToken(user: { username: string, email: string }) {
 function setUserInfo(user: User) {
   return {
     username: user.username,
-    email: user.email,
+    _id: user._id,
   };
 }
 
@@ -32,6 +32,9 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
+/**
+ * Utility function to grab the user id from auth headers
+ */
 export function getUserIdFromHeaders(headers: any) {
   if (headers && headers.Authorization) {
     // Get auth header and remove 'JWT' from front
@@ -41,40 +44,30 @@ export function getUserIdFromHeaders(headers: any) {
     try {
       decoded = jwt.verify(authorization, config.secret);
     } catch (e) {
-      console.log("Could not get a userId from this header");
+      console.error("Could not get a userId from this header");
       return false;
     }
-    // TODO: deal with this
-    console.log("decoded:");
-    console.log(decoded);
-    return decoded.username;
+    return decoded._id;
   }
   console.error("getUserIdFromHeaders: Malformed passed in");
 };
 
 // Login Route
 export function login(req: Request, res: Response) {
-  const { email, password } = req.body;
-  console.log('wowowow');
+  const { username, password } = req.body;
 
-  UserModel.findOne({ email }, (err: any, user: User) => {
+  UserModel.findOne({ username }, (err: any, user: User) => {
     if (err) {
       return res.status(500).send('An unexpected error occurred');
     }
 
     if (!user) {
-      return res.status(500).send("Your login details could not be verified. Please try again.");
+      return res.status(401).send("Your login details could not be verified. Please try again.");
     }
 
     user.comparePassword(password, (comparePasswordErr: any, isMatch: boolean) => {
-      if (comparePasswordErr) {
+      if (comparePasswordErr || !isMatch) {
         res.status(401).send("Your login details could not be verified. Please try again.");
-      }
-
-      if (!isMatch) {
-        res
-          .status(500)
-          .send("Your login details could not be verified. Please try again.");
       }
 
       const userInfo = setUserInfo(user);
@@ -88,15 +81,7 @@ export function login(req: Request, res: Response) {
 
 // Registration Route
 export function register(req: Request, res: Response, next: any) {
-  // Check for registration errors
-  const email = req.body.email;
-  const username = req.body.username;
-  const password = req.body.password;
-
-  // Return error if no email provided
-  if (!email) {
-    return res.status(422).send({ error: "You must enter an email address." });
-  }
+  const { username, password } = req.body;
 
   // Return error if full name not provided
   if (!username) {
@@ -108,7 +93,7 @@ export function register(req: Request, res: Response, next: any) {
     return res.status(422).send({ error: "You must enter a password." });
   }
 
-  UserModel.findOne({ email }, function(err, existingUser) {
+  UserModel.findOne({ username }, function(err, existingUser) {
     if (err) {
       return next(err);
     }
@@ -117,12 +102,11 @@ export function register(req: Request, res: Response, next: any) {
     if (existingUser) {
       return res
         .status(422)
-        .send({ error: "That email address is already in use." });
+        .send({ error: "That username is already in use." });
     }
 
-    // If email is unique and password was provided, create account
+    // If username is unique and password was provided, create account
     const user = new UserModel({
-      email,
       password,
       username
     });
@@ -131,9 +115,6 @@ export function register(req: Request, res: Response, next: any) {
       if (err) {
         return next(err);
       }
-
-      // Subscribe member to Mailchimp list
-      // mailchimp.subscribeToNewsletter(user.email);
 
       // Respond with JWT if user was created
       const userInfo = setUserInfo(user);

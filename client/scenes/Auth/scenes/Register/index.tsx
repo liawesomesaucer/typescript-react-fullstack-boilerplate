@@ -5,41 +5,13 @@ import { Field, reduxForm, InjectedFormProps } from "redux-form";
 import { registerUser, RegisterInfo } from "Boilerplate/modules/auth";
 import Toast from 'Boilerplate/components/Toast';
 
-const renderField = (field: any) => (
-  <div>
-    <input className="form-control" type="text" {...field.input} />
-    {field.touched && field.error && <div className="error">{field.error}</div>}
-  </div>
-);
+import FieldComponent from 'Boilerplate/components/Fields/Field';
+import PasswordFieldComponent from 'Boilerplate/components/Fields/PasswordField';
 
-const renderPasswordField = (field: any) => (
-  <div>
-    <input className="form-control" type="password" {...field.input} />
-    {field.touched && field.error && <div className="error">{field.error}</div>}
-  </div>
-);
-
-function validate(formProps: RegisterInfo) {
-  const errors: any = {};
-
-  if (!formProps.username) {
-    errors.username = "Please enter a username";
-  }
-
-  if (!formProps.email) {
-    errors.email = "Please enter an email";
-  }
-
-  if (!formProps.password) {
-    errors.password = "Please enter a password";
-  }
-
-  return errors;
-}
+const required = (value: any) => (value ? undefined : 'Required')
 
 const form = reduxForm({
-  form: "register",
-  validate
+  form: "register"
 });
 
 interface RegisterProps {
@@ -54,45 +26,25 @@ const Register: React.SFC<RegisterProps & InjectedFormProps> = ({ handleSubmit, 
       <h3>Register for Boilerplate</h3>
       <form onSubmit={handleSubmit((registerInfo: RegisterInfo) => registerUser(registerInfo))}>
         {errorMessage && <Toast text={errorMessage} type="error" />}
-        <div className="row">
-          <div className="col-md-12">
-            <label htmlFor="sb-auth--form-username">Username</label>
-            <Field
-              id="sb-auth--form-username"
-              name="username"
-              className="form-control"
-              component={renderField}
-              type="text"
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12">
-            <label htmlFor="sb-auth--form-email">Email</label>
-            <Field
-              id="sb-auth--form-email"
-              name="email"
-              className="form-control"
-              component={renderField}
-              type="text"
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12">
-            <label htmlFor="sb-auth--form-password">Password</label>
-            <Field
-              id="sb-auth--form-password"
-              name="password"
-              className="form-control"
-              component={renderPasswordField}
-              type="password"
-            />
-          </div>
-        </div>
-        <button type="submit" className="btn btn-primary">
+        <label htmlFor="username">Username</label>
+        <Field
+          id="username"
+          name="username"
+          component={FieldComponent}
+          type="text"
+          validate={required}
+        />
+        <label htmlFor="password">Password</label>
+        <Field
+          id="password"
+          name="password"
+          component={PasswordFieldComponent}
+          type="password"
+          validate={required}
+        />
+        <button type="submit" className="btn">
           Register
-            </button>
+        </button>
       </form>
     </div>
   );

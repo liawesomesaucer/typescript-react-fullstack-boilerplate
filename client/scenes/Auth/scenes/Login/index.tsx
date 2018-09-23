@@ -4,6 +4,10 @@ import { Field, reduxForm, InjectedFormProps } from "redux-form";
 
 import { loginUser, LoginInfo } from "Boilerplate/modules/auth";
 import Toast from 'Boilerplate/components/Toast';
+import FieldComponent from 'Boilerplate/components/Fields/Field';
+import PasswordFieldComponent from 'Boilerplate/components/Fields/PasswordField';
+
+const required = (value: any) => (value ? undefined : 'Required')
 
 const form = reduxForm({
   form: "login"
@@ -21,26 +25,22 @@ const Login: React.SFC<LoginProps & InjectedFormProps> = ({ errorMessage, handle
       <h3>Login to Boilerplate</h3>
       <form onSubmit={handleSubmit((loginInfo: LoginInfo) => loginUser(loginInfo))}>
         {errorMessage && <Toast text={errorMessage} type="error" />}
-        <div>
-          <label htmlFor="email">Email</label>
-          <Field
-            id="email"
-            name="email"
-            className="form-control"
-            component="input"
-            type="text"
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <Field
-            id="password"
-            name="password"
-            className="form-control"
-            component="input"
-            type="password"
-          />
-        </div>
+        <label htmlFor="username">Username</label>
+        <Field
+          id="username"
+          name="username"
+          component={FieldComponent}
+          type="text"
+          validate={required}
+        />
+        <label htmlFor="password">Password</label>
+        <Field
+          id="password"
+          name="password"
+          component={PasswordFieldComponent}
+          type="password"
+          validate={required}
+        />
         <button type="submit" className="btn">
           Login
         </button>

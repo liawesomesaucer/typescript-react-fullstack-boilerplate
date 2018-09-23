@@ -52,14 +52,14 @@ class Navigation extends React.Component<NavigationProps, {}> {
     return (
       <div className="navbar nav">
         <div className="navbar__content">
-          {authenticated &&
+          {user &&
             <p>Hi {user.username}, you are authenticated</p>
           }
           <Link to="/" className="navbar__link">Home</Link>
           <Link to="/todos" className="navbar__link">Todos</Link>
           {authenticated
             ? (
-              <a onClick={this.handleLogout}>Logout</a>
+              <a className="navbar__link" href="" onClick={this.handleLogout} style={{ float: 'right' }}>Logout</a>
             ) : (
               <React.Fragment>
                 <Link className="navbar__link" to="/login">Login</Link>

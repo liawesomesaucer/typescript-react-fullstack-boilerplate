@@ -1,13 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import TodoCreate from "Boilerplate/scenes/Todos/components/TodoCreate";
+import { connect } from 'react-redux';
 
-const Todos: React.SFC = () => {
-  return (
-    <div className="container">
-      <TodoCreate />
-    </div>
-  );
+import TodoCreate from "./components/TodoCreate";
+import TodoItem from "./components/TodoItem";
+import { loadTodos } from '../../modules/todos';
+
+interface TodosProps {
+  todos: Array<any>;
+  authenticated: boolean;
+  loadTodos(): any;
+}
+
+class Todos extends React.Component<TodosProps>  {
+  componentWillMount() {
+    this.props.loadTodos();
+  }
+
+  render() {
+    const { todos, authenticated } = this.props;
+    return (
+      <div className="container">
+        <h1>Todos</h1>
+        <div>
+          {todos && todos.length
+            ? todos.map(todo => <TodoItem todo={todo} />)
+            : <p>No Todos. {authenticated ? 'Start by creating one.' : 'Need to log in?'}</p>
+          }
+        </div>
+        {authenticated && <TodoCreate />}
+      </div>
+    );
+  }
 };
 
-export default Todos;
+function mapStateToProps(state: any) {
+  return {
+    todos: state.todos.todos,
+    authenticated: state.auth.authenticated,
+  };
+}
+
+export default connect(mapStateToProps, { loadTodos })(Todos);

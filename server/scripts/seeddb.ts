@@ -10,12 +10,12 @@ import User from '../models/users';
 
 const seedTodos = [
   {
-    authorUsername: 'vincent',
+    author: 'vincent',
     name: 'Build some unicorns',
     description: 'Do it!!!@!@!@',
   },
   {
-    authorUsername: 'vincent',
+    author: 'vincent',
     name: 'Set up projects',
     description: 'It\'s time to start working',
   }
@@ -30,7 +30,6 @@ seedTodos.forEach(t => t.save(function(err) {
 const seedUsers = [
   {
     username: 'vincent',
-    email: 'vincent@vincent.com',
     password: 'password!!'
   },
 ].map(u => new User(u));

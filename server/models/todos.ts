@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const TodoSchema = new mongoose.Schema({
-  authorUsername: {
+  author: {
     type: String,
     ref: 'User',
     required: true,

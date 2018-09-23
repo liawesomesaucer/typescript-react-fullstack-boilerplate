@@ -30,8 +30,9 @@ export default function routes(app: any) {
    * Todo routes
    */
   apiRoutes.get('/todos', TodoController.todos);
-  apiRoutes.get('/todos/:todoId', TodoController.todo);
+  apiRoutes.get('/todos/:todoId', requireAuth, TodoController.todo);
   apiRoutes.post('/todos/create', requireAuth, TodoController.createTodo);
+  apiRoutes.delete('/todos/:todoId', TodoController.deleteTodo);
 
   /**
    * Profile routes

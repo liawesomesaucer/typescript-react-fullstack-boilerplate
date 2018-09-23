@@ -4,7 +4,7 @@ A modern (and opinionated) full-stack boilerplate with TypeScript React (v16)+ R
 
 * ES6 + linter, based mostly on Airbnb's typescript [guidelines](https://github.com/airbnb/javascript)
 * Typescript
-* Webpack + Prettier
+* Webpack
 * Authentication with JWT based on [this guide](https://medium.com/@rajaraodv/securing-react-redux-apps-with-jwt-tokens-fcfe81356ea0)
 * SCSS based on Airbnb's [SCSS](https://github.com/airbnb/css) guidelines
 

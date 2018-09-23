@@ -2,14 +2,15 @@
  * Contains all the types for models. Models can be refactored into individual folders when needed
  */
 export interface User {
-  email: string,
+  _id: string,
   password: string,
   username: string,
-  comparePassword: (candidatePassword: string, cb: any) => any,
+  comparePassword?: (candidatePassword: string, cb: any) => any,
 };
 
 export interface Todo {
-  authorUsername: string,
-  name: string,
+  _id: string,
+  author: string,
+  title: string,
   description: string,
 }

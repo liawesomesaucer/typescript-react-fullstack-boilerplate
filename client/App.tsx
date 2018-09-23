@@ -13,7 +13,6 @@ import RequireAuth from "./scenes/Auth/services/RequireAuth";
 import NotFound from "./components/NotFound";
 
 import Todo from "./scenes/Todo";
-import TodoEdit from "./scenes/Todo/scenes/TodoEdit"
 import Todos from "./scenes/Todos";
 
 import Home from "./scenes/Home";
@@ -33,14 +32,9 @@ const App: React.SFC<AppProps> = () => (
       <Route exact path="/" component={Home} />
 
       <Route exact path="/todos" component={Todos} />
-      <Route exact path="/todos/:todoId" component={Todo} />
 
       {/* Pages requiring a user to be logged in can be wrapped as such */}
-      <Route
-        exact
-        path="/todos/:todoId/edit"
-        component={RequireAuth(TodoEdit)}
-      />
+      <Route exact path="/todos/:todoId" component={RequireAuth(Todo)} />
 
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
