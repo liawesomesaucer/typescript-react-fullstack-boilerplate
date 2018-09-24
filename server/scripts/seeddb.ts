@@ -18,10 +18,10 @@ const seedTodos = [
     author: 'vincent',
     name: 'Set up projects',
     description: 'It\'s time to start working',
-  }
+  },
 ].map(t => new Todo(t));
 
-seedTodos.forEach(t => t.save(function(err) {
+seedTodos.forEach(t => t.save((err) => {
   if (err) {
     console.error(err);
   }
@@ -30,11 +30,11 @@ seedTodos.forEach(t => t.save(function(err) {
 const seedUsers = [
   {
     username: 'vincent',
-    password: 'password!!'
+    password: 'password!!',
   },
 ].map(u => new User(u));
 
-seedUsers.forEach(u => u.save(function(err) {
+seedUsers.forEach(u => u.save((err) => {
   if (err) {
     console.error(err);
   }

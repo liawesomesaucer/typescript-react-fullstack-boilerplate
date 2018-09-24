@@ -3,12 +3,12 @@ const autoprefixer = require('autoprefixer/lib/autoprefixer');
 const path = require('path');
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   mode: 'production',
 
   entry: {
     app: [
-      './client/index.ts',
+      './client/index.tsx',
     ],
     vendor: [
       'react',
@@ -30,7 +30,11 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
+      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+      { test: /\.(ts|tsx)$/,
+        loader: "ts-loader",
+      },
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
@@ -38,15 +42,23 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ('style-loader!css-loader!sass-loader'),
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                autoprefixer
+              ]
+            }
+          },
+          { loader: 'sass-loader' }
+        ]
       },
       {
         test: /\.css$/,
         loader: ('style-loader!css-loader'),
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
       },
       {
         test: /\.svg$/,
@@ -55,17 +67,15 @@ module.exports = {
     ],
   },
 
-  postcss: () => [
-    autoprefixer({
-      browsers: [
-        '>1%',
-        'last 4 versions',
-        'Firefox ESR',
-        'not ie < 9',
-      ],
-    }),
-  ],
-
+  optimization: {
+    splitChunks: {
+      // include all types of chunks
+      chunks: 'all',
+      name: 'vendor',
+      minChunks: Infinity,
+      filename: 'vendor.js',
+    }
+  },
   plugins: [
   ],
 };

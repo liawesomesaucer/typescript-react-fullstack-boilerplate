@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface ToastProps {
-  text: string,
-  type?: string,
+  text: string;
+  type?: string;
 }
 
 const Toast: React.SFC<ToastProps> = ({ text, type }) => {
@@ -11,6 +11,6 @@ const Toast: React.SFC<ToastProps> = ({ text, type }) => {
       {text}
     </div>
   );
-}
+};
 
 export default Toast;

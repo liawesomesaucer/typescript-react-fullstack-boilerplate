@@ -18,7 +18,7 @@ const UserSchema = new Schema({
 
 // Pre-save of user to database, hash password if password is modified or new
 UserSchema.pre('save', function (next) {
-  const user: any = this;
+  const user: any = this; /* tslint-disable-line */
   const SALT_FACTOR = 5;
 
   if (!user.isModified('password')) return next();

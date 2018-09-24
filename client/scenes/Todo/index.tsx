@@ -2,16 +2,26 @@ import React from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import { connect } from 'react-redux';
 import { Todo as TodoType } from 'Types';
-import { loadTodo } from '../../modules/todos';
+import { loadTodo, finishTodo } from '../../modules/todos';
 
 interface TodoProps extends RouteComponentProps<any> {
   todo: TodoType,
   loadTodo: (_id: any) => any
+  finishTodo: (_id: any) => any
 }
 
 class Todo extends React.Component<TodoProps> {
+  constructor(props: TodoProps) {
+    super(props);
+
+    this.finishTodo = this.finishTodo.bind(this);
+  }
   componentWillMount() {
     this.props.loadTodo(this.props.match.params.todoId);
+  }
+
+  finishTodo() {
+    this.props.finishTodo(this.props.match.params.todoId);
   }
 
   render() {
@@ -25,9 +35,16 @@ class Todo extends React.Component<TodoProps> {
 
     return (
       <div className="container">
+        <Link to="/todos">Back</Link>
         <h1>{title}</h1>
         <p>By {author}</p>
         <p>{description}</p>
+        <button
+          className="btn"
+          onClick={this.finishTodo}
+        >
+          Mark as done
+        </button>
       </div>
     );
   }
@@ -39,4 +56,4 @@ function mapStateToProps(state: any) {
   };
 }
 
-export default connect(mapStateToProps, { loadTodo })(Todo);
+export default connect(mapStateToProps, { loadTodo, finishTodo })(Todo);

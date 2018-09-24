@@ -57,17 +57,13 @@ module.exports = {
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
-        test: /\.(js|jsx)$/,
-        loader: 'eslint-loader',
+        test: /\.(ts|tsx)$/,
+        loader: 'tslint-loader',
         enforce: 'pre',
-        include: __dirname + '/client',
-      },
-
-      // Sourcemaps
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        loader: "source-map-loader"
+        include: [
+          __dirname + '/client',
+          __dirname + '/server'
+        ]
       },
 
       // Loaders

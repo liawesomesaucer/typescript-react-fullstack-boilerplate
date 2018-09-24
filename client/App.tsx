@@ -1,23 +1,23 @@
-import React from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import { Route, Switch } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 
 // Component imports
-import Navigation from "./scenes/Navigation";
+import Navigation from './scenes/Navigation';
 
-import LoginPage from "./scenes/Auth/scenes/Login";
-import RegisterPage from "./scenes/Auth/scenes/Register";
-import RequireAuth from "./scenes/Auth/services/RequireAuth";
+import Login from './scenes/Auth/scenes/Login';
+import Register from './scenes/Auth/scenes/Register';
+import RequireAuth from './scenes/Auth/services/RequireAuth';
 
-import NotFound from "./components/NotFound";
+import NotFound from './components/NotFound';
 
-import Todo from "./scenes/Todo";
-import Todos from "./scenes/Todos";
+import Todo from './scenes/Todo';
+import Todos from './scenes/Todos';
 
-import Home from "./scenes/Home";
+import Home from './scenes/Home';
 
-import "./styles/styles.scss";
+import './styles/styles.scss';
 
 interface AppProps {
   history: any;
@@ -36,8 +36,8 @@ const App: React.SFC<AppProps> = () => (
       {/* Pages requiring a user to be logged in can be wrapped as such */}
       <Route exact path="/todos/:todoId" component={RequireAuth(Todo)} />
 
-      <Route path="/login" component={LoginPage} />
-      <Route path="/register" component={RegisterPage} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
 
       <Route component={NotFound} />
     </Switch>
@@ -47,7 +47,7 @@ const App: React.SFC<AppProps> = () => (
 function mapStateToProps(state: any) {
   return {
     auth: state.auth,
-    location: state.router.location
+    location: state.router.location,
   };
 }
 

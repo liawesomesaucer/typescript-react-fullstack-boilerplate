@@ -15,7 +15,7 @@ export const TODO_DELETE = 'todos/TODO_DELETE';
 const API_URL = '/api';
 
 // Reducer
-export default function (state = {}, action: any) {
+export default function(state = {}, action: any) {
   switch (action.type) {
     case TODO_LOAD:
       return {
@@ -35,7 +35,6 @@ export default function (state = {}, action: any) {
       return state;
   }
 }
-
 
 // Action creators
 /**
@@ -89,9 +88,7 @@ export function createTodo(data: any) {
       history.push(`/todos/${res.data._id}`);
     })
     .catch((error) => {
-      // TODO: if unauthorized
       errorHandler(dispatch, error.response, AuthTypes.AUTH_ERROR);
-      // TODO: handle other error types
     });
   };
 }
@@ -103,12 +100,13 @@ export function createTodo(data: any) {
  */
 export function finishTodo(todoId: string) {
   return (dispatch: Dispatch) => {
-    axios.get(`${API_URL}/todos/${todoId}`)
+    axios.delete(`${API_URL}/todos/${todoId}`)
     .then((response) => {
       dispatch({
         type: TODO_DELETE,
         payload: response.data.todoId,
       });
+      history.push('/todos');
     })
     .catch((error) => {
       errorHandler(dispatch, error.response, AuthTypes.AUTH_ERROR);

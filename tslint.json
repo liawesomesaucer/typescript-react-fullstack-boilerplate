@@ -2,10 +2,18 @@
   "defaultSeverity": "error",
   "extends": [
        "tslint-eslint-rules",
-       "tslint-config-airbnb"
+       "tslint-config-airbnb",
+       "tslint-react"
    ],
-  "jsRules": {},
+  "jsRules": {
+    "prefer-arrow-callback": false
+  },
   "rules": {
-    "allowSyntheticDefaultImports": true
+    "only-arrow-functions": false,
+    "prefer-arrow-callback": false,
+    "import-name": false,
+    "jsx-boolean-value": ["never"],
+    "variable-name": ["allow-pascal-case"],
+    "space-before-function-paren": [true, "never"]
   }
 }

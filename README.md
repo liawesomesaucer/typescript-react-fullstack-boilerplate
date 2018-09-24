@@ -1,16 +1,22 @@
-# Fullstack TypeScript React-Redux + Express + Passport JWT Auth Boilerplate
+# Fullstack TypeScript React-Redux + Express + Passport JWT Auth Example
 
-A modern (and opinionated) full-stack boilerplate with TypeScript React (v16)+ Redux + React-Router, Express + Mongoose backend, featuring a todo list with authentication.
+**Note** Currently in progress. Functional, but a lot of lint warnings and no tests D:
 
-* ES6 + linter, based mostly on Airbnb's typescript [guidelines](https://github.com/airbnb/javascript)
+A modern (and opinionated) full-stack example with TypeScript React (v16)+ Redux + React-Router, Express + Mongoose backend, featuring a todo list with authentication. Probably the basis of my projects from now on. Feel free to use.
+
+* ES6 + typescript linter, based mostly on Airbnb's typescript [guidelines](https://github.com/airbnb/javascript)
 * Typescript
 * Webpack
 * Authentication with JWT based on [this guide](https://medium.com/@rajaraodv/securing-react-redux-apps-with-jwt-tokens-fcfe81356ea0)
 * SCSS based on Airbnb's [SCSS](https://github.com/airbnb/css) guidelines
 
-## Other features/Things to keep in mind
+## About this Example
 
-Additional info about this configuration that you might want or want to reconfigure
+Additional info about this configuration that you might want or want to change
+
+* Note that this example is configured to show everyone each todo that anyone makes
+
+### Technicalities
 
 * Axios is configured to automatically attach Auth JWT headers to API requests. Can be bypassed/modified by using `axios` normally or in your desired configuration
   * JWT tokens are stored in cookies (rather than localStorage)
@@ -25,10 +31,10 @@ Additional info about this configuration that you might want or want to reconfig
 ## First-time Setup
 
 * Install [yarn](https://yarnpkg.com/en/docs/install)
-* Copy the `.env.example` to your `.env`
+* Copy the `.env.example` to your `.env`, making changes as needed
 * Install Webpack globally `yarn global add webpack`
 * Install typescript globally `yarn global add typescript`
-* Install mongo globally `yarn global add mongo`. In one terminal, run `sudo mongod` to spin up a database. Note `example.env` is configured to connect to a database on localhost, but you can configure it as you like
+* Install mongo globally `yarn global add mongo`. In one terminal, run `sudo mongod` to spin up a database. Note the example env is configured to connect to a database on localhost, but you can configure it as you like
 * Inside the main directory of the project, run `yarn` to install dependencies
 
 Go ahead and run
@@ -41,7 +47,7 @@ To start devving!
 ## Development
 
 * `yarn start:dev` - to start local development server with nodemon and hot reloading.
-* `yarn test` - to run unit tests.
+<!-- * `yarn test` - to run unit tests. -->
 * `yarn lint` - to run linter.
 * `yarn build` - to build production files
 * `yarn start:prod` - to start the server in production mode

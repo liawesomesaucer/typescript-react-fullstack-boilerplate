@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface FieldProps {
-  input: any,
-  meta: any,
+  input: any;
+  meta: any;
 }
 
 const Field: React.SFC<FieldProps> = ({ input, meta }) => {

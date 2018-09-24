@@ -11,7 +11,7 @@ export function todo(req: Request, res: Response) {
       return res.status(500).send('An unexpected error occurred');
     }
     res.status(200).json({ todo });
-  })
+  });
 }
 
 /**
@@ -32,12 +32,12 @@ export function todos(req: Request, res: Response) {
  */
 export function createTodo(req: Request, res: Response) {
   const todo = new TodoModel(req.body.body.data);
-  todo.save((err: any) => {
+  todo.save((err: any, todo: any) => {
     if (err) {
       console.error(err);
       return res.status(500).send('An unexpected error occurred');
     }
-    res.status(200).send('ok');
+    res.status(200).json(todo);
   });
 }
 
@@ -45,12 +45,12 @@ export function createTodo(req: Request, res: Response) {
  * Controller for deleting a todo
  */
 export function deleteTodo(req: Request, res: Response) {
-  const { _id } = req.params;
-  TodoModel.findByIdAndDelete(_id, (err: any) => {
+  const { todoId } = req.params;
+  TodoModel.deleteOne({ _id: todoId }, (err: any) => {
     if (err) {
       console.error(err);
       return res.status(500).send('An unexpected error occurred');
     }
     res.status(200).send('ok');
-  })
+  });
 }

@@ -8,7 +8,6 @@ import * as UserController from './controllers/users';
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
 
-
 export default function routes(app: any) {
   // Initializing route groups
   const apiRoutes = Router();
@@ -29,10 +28,10 @@ export default function routes(app: any) {
   /**
    * Todo routes
    */
-  apiRoutes.get('/todos', TodoController.todos);
+  apiRoutes.get('/todos', requireAuth, TodoController.todos);
   apiRoutes.get('/todos/:todoId', requireAuth, TodoController.todo);
   apiRoutes.post('/todos/create', requireAuth, TodoController.createTodo);
-  apiRoutes.delete('/todos/:todoId', TodoController.deleteTodo);
+  apiRoutes.delete('/todos/:todoId', requireAuth, TodoController.deleteTodo);
 
   /**
    * Profile routes
@@ -41,4 +40,4 @@ export default function routes(app: any) {
 
   // Set url for API group routes
   app.use('/api', apiRoutes);
-};
+}

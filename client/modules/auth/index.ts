@@ -21,26 +21,26 @@ interface AuthAction extends Action {
 }
 
 interface AuthError {
-  data: any,
-  status: number,
-  response: any,
+  data: any;
+  status: number;
+  response: any;
 }
 
 interface AuthState {
-  message: string,
-  authenticated: boolean,
-  error?: AuthError,
-  content?: string,
+  message: string;
+  authenticated: boolean;
+  error?: AuthError;
+  content?: string;
 }
 
 // Reducer
 const INITIAL_STATE: AuthState = {
   message: '',
   content: '',
-  authenticated: false
+  authenticated: false,
 };
 
-export default function (state = INITIAL_STATE, action: AuthAction) {
+export default function(state = INITIAL_STATE, action: AuthAction) {
   switch (action.type) {
     case AuthTypes.AUTH_USER:
       return {
@@ -115,7 +115,7 @@ export function errorHandler(dispatch: Dispatch, error: AuthError, type: AuthTyp
 export interface LoginInfo {
   username: string;
   password: string;
-};
+}
 
 export function loginUser({ username, password }: LoginInfo) {
   return (dispatch: Dispatch) => {
@@ -138,7 +138,7 @@ export function loginUser({ username, password }: LoginInfo) {
 export interface RegisterInfo {
   username: string;
   password: string;
-};
+}
 
 export function registerUser({ username, password }: RegisterInfo) {
   return (dispatch: Dispatch) => {
